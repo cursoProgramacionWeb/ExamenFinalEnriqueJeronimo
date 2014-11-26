@@ -20,6 +20,7 @@ public class Negocio {
 		String msg;
 		
 		msg= "Alta de nueva tarjeta de Crédito realizada correctamente";
+		
 		return msg;
 	}
 
