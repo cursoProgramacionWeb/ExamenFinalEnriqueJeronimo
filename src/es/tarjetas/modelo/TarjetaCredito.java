@@ -40,12 +40,12 @@ public class TarjetaCredito {
 	}
 
 	
-	// getters and setters
 
 	public TarjetaCredito() {
 		super();
 	}
 
+	// getters and setters
 
 	public int getId() {
 		return id;

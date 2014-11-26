@@ -32,33 +32,29 @@ public class DarAltaTarjetaServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
+			//recuperamos los datos
+			String numero= request.getParameter("numero");
+			int cupoMaximo= Integer.parseInt(request.getParameter("cupoMaximo"));
+			int cupoDisponible= Integer.parseInt(request.getParameter("cupoDisponible"));
+			boolean tipo= Boolean.parseBoolean(request.getParameter("tipo"));
+			String numeroComprobacion= request.getParameter("numeroComprobacion");
+			int contrasenha= Integer.parseInt(request.getParameter("contrasenha"));
 				
-		//recuperamos los datos
-		String numero= request.getParameter("numero");
-		int cupoMaximo= Integer.parseInt(request.getParameter("cupoMaximo"));
-		int cupoDisponible= Integer.parseInt(request.getParameter("cupoDisponible"));
-		boolean tipo= Boolean.parseBoolean(request.getParameter("tipo"));
-		String numeroComprobacion= request.getParameter("numeroComprobacion");
-		int contrasenha= Integer.parseInt(request.getParameter("contrasenha"));
-		
-		//CAMINO DE IDA A LA BD
-		Negocio negocio= new Negocio();
-		int id= negocio.darAltaTarjeta(numero, cupoMaximo, cupoDisponible, tipo, numeroComprobacion, contrasenha);
-		
-		
-		//CAMINO DE VUELTA DE LA BD
-		
-		String men;
-		if (id>=1){
-			men= negocio.altaCorrecta();
-			
-			request.setAttribute("mensaje",men);
-			RequestDispatcher rd= request.getRequestDispatcher("vistaMensaje.jsp");
-		    rd.forward(request, response);
-		}
-		
-		
-		
+			//CAMINO DE IDA A LA BD
+			Negocio negocio= new Negocio();
+			int id= negocio.darAltaTarjeta(numero, cupoMaximo, cupoDisponible, tipo, numeroComprobacion, contrasenha);
+				
+				
+			//CAMINO DE VUELTA DE LA BD
+				
+			String men;
+			if (id>=1){
+				men= negocio.altaCorrecta();
+					
+				request.setAttribute("mensaje",men);
+				RequestDispatcher rd= request.getRequestDispatcher("vistaMensaje.jsp");
+				rd.forward(request, response);
+				}
 	}
 
 	/**
