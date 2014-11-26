@@ -16,4 +16,11 @@ public class Negocio {
 		return id;
 	}
 
+	public String altaCorrecta() {
+		String msg;
+		
+		msg= "Alta de nueva tarjeta de Crédito realizada correctamente";
+		return msg;
+	}
+
 }
