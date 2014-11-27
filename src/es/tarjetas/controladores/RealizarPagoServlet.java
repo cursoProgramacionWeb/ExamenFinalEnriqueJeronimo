@@ -45,17 +45,17 @@ public class RealizarPagoServlet extends HttpServlet {
 		
 		//VUELTA DE LA BD
 		String msg="";
-		if(cantidadPagar>=(saldo-20)){
-			msg= "No hay suficiente dinero en cuenta para pagar";
+		if(cantidadPagar>=saldo){
+			msg="No hay suficiente dinero en cuenta para pagar";
 		}
 		else{
 			msg="Pago efectuado";
+		}
 					
 		request.setAttribute("mensaje",msg);
 		// redirigir... a  la vista mensaje
 		RequestDispatcher rd= request.getRequestDispatcher("vistaMensaje.jsp");
 		rd.forward(request, response);
-		}
 	}
 
 	/**
