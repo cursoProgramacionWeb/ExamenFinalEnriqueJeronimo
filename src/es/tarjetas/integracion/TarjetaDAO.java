@@ -136,6 +136,35 @@ public class TarjetaDAO {
 			}
 			return tc;
 			}
-	
+		public int actualizar(String numero, int cupoDisponible) {
+			
+			int filasAfectadas=0;
+	        try { 
+	            //conectar
+	              conectar();
+	              
+	            //preparar la consulta..
+	              PreparedStatement ps= cx.prepareStatement("UPDATE TARJETACREDITO SET CUPODISPONIBLE=? WHERE NUMERO=?");
+	          
+	           // setear los ?   
+	              ps.setInt(1, cupoDisponible);
+	              ps.setString(2, numero);
+	              
+	              
+	           // ejecutar la consulta
+	              filasAfectadas= ps.executeUpdate();
+	              
+	           // hacer el commit
+	              cx.commit();
+	          
+	           //cerrar la conexion
+	              desconectar();
+	        } catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	       return filasAfectadas;
+		}
+				
 
 }

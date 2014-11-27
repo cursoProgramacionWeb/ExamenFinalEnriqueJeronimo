@@ -31,4 +31,18 @@ public class Negocio {
 		return tarjetaCredito;
 	}
 
+	public String actualizar(String numero, int cupoDisponible) {
+		
+		String msg;
+		int filas= tarjetadao.actualizar(numero, cupoDisponible);
+        if(filas>=1) {
+            msg="Se ha actualizado " + filas +" Tarjeta de Crédito";
+        }
+        else {
+              msg="Imposible actualizar";
+        }
+       return msg;
+       
+	}
+
 }
