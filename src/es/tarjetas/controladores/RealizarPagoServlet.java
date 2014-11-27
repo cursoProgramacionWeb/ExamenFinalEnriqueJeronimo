@@ -44,12 +44,20 @@ public class RealizarPagoServlet extends HttpServlet {
 	
 		
 		//VUELTA DE LA BD
+		//String negocio.respuestaPago();
+		
 		String msg="";
-		if(cantidadPagar>=saldo){
-			msg="No hay suficiente dinero en cuenta para pagar";
+		if(saldo<20){
+			msg="No se puede hacer el pago. Saldo en cuenta menor a 20 euros";
 		}
 		else{
-			msg="Pago efectuado";
+			if(cantidadPagar>=saldo){
+				msg="No hay suficiente dinero en cuenta para pagar";
+			}
+			else{
+				msg="Pago efectuado";
+			}
+			
 		}
 					
 		request.setAttribute("mensaje",msg);
