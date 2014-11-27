@@ -104,6 +104,38 @@ public class TarjetaDAO {
 	
 		
 		}
+		public TarjetaCredito consultarUno(String numero) {
+			
+			TarjetaCredito tc= new TarjetaCredito();
+			
+			try {
+				
+			//1. conectar
+			     conectar();
+			   //2. preparar la consulta
+			     PreparedStatement ps = cx.prepareStatement("SELECT NUMERO, CUPODISPONIBLE FROM TARJETACREDITO WHERE NUMERO=?");
+			     // 2.1 setear los ?
+			         ps.setString(1, numero);
+			         
+			   // 3, ejecutar la consulta
+			         ResultSet rs =ps.executeQuery();  
+			    //4. llenar el objeto pais.. con los datos de respuesta de BBDD..
+			         //Nota: La respuesta viene en un objeto ResultSet
+			            
+			         if(rs.next()) {   
+			        	 tc.setNumero(rs.getString("numero"));
+			        	 tc.setCupoDisponible(rs.getInt("cupoDisponible"));	                
+			         }
+						
+			    //5.desconectar
+			        desconectar();
+			        	 
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return tc;
+			}
 	
 
 }

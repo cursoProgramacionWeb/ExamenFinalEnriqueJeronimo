@@ -24,4 +24,11 @@ public class Negocio {
 		return msg;
 	}
 
+	public TarjetaCredito consultarUno(String numero) {
+		
+		TarjetaCredito tarjetaCredito= tarjetadao.consultarUno(numero);
+				
+		return tarjetaCredito;
+	}
+
 }
