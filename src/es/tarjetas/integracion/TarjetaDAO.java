@@ -45,7 +45,7 @@ public class TarjetaDAO {
 	        conectar();
 	        
 	        //2.Preparar la sql (query)
-			PreparedStatement ps = cx.prepareStatement("INSERT INTO TARJETACREDITO VALUES(?,?,?,?,?,?)");
+			PreparedStatement ps = cx.prepareStatement("INSERT INTO TARJETACREDITO VALUES(?,?,?,?,?,?,?)");
 			  // 2.1 setear los interrogantes...
 			  ps.setInt(1, 0);
 			  ps.setString(2, tarjetaCredito.getNumero());
@@ -53,6 +53,8 @@ public class TarjetaDAO {
 			  ps.setInt(4, tarjetaCredito.getCupoDisponible());
 			  ps.setBoolean(5, tarjetaCredito.isTipo());
 			  ps.setString(6, tarjetaCredito.getNumeroComprobacion());
+			  ps.setInt(7, tarjetaCredito.getContrasenha());
+			  
 			  
 			
 			//3. Ejecutar la consulta

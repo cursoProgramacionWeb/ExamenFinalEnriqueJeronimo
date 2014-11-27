@@ -51,10 +51,12 @@ public class DarAltaTarjetaServlet extends HttpServlet {
 			if (id>=1){
 				men= negocio.altaCorrecta();
 					
-				request.setAttribute("mensaje",men);
-				RequestDispatcher rd= request.getRequestDispatcher("vistaMensaje.jsp");
-				rd.forward(request, response);
-				}
+			request.setAttribute("mensaje",men);
+			RequestDispatcher rd= request.getRequestDispatcher("vistaMensaje.jsp");
+			rd.forward(request, response);
+			
+			}
+			
 	}
 
 	/**
