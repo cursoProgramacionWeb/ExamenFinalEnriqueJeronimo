@@ -165,6 +165,43 @@ public class TarjetaDAO {
 	        }
 	       return filasAfectadas;
 		}
+		
+		
+		public int consultarSaldo(String numero, int contrasenha,
+				String numeroComprobacion) {
+			
+			int consultarSaldo=0;
+	        try { 
+	            //conectar
+	              conectar();
+	              
+	            //preparar la consulta..
+	              PreparedStatement ps= cx.prepareStatement("SELECT CUPODISPONIBLE FROM TARJETACREDITO WHERE NUMERO=? AND CONTRASENHA=? AND NUMEROCOMPROBACION=?");
+	          
+	           // setear los ?   
+	              
+	              ps.setString(1, numero);
+	              ps.setInt(2, contrasenha);
+	              ps.setString(3, numeroComprobacion);
+	              
+	              
+	           // ejecutar la consulta
+	              ResultSet consulta = ps.executeQuery();
+	              
+	              if(consulta.next()) {   
+			        	 
+	            	  consultarSaldo=consulta.getInt("cupoDisponible");
+			           		                
+			         }
+	          
+	           //cerrar la conexion
+	              desconectar();
+	        } catch (SQLException e) {
+	            // TODO Auto-generated catch block
+	            e.printStackTrace();
+	        }
+	       return consultarSaldo;
+		}
 				
 
 }

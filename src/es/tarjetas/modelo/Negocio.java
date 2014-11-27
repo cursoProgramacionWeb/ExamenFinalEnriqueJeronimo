@@ -45,4 +45,17 @@ public class Negocio {
        
 	}
 
+	public int consultarSaldo(String numero, int contrasenha,
+			String numeroComprobacion) {
+		
+		int saldo= tarjetadao.consultarSaldo(numero, contrasenha, numeroComprobacion);
+		
+		String msg;
+		if(saldo<20){
+			msg="No se puede hacer el pago. Saldo menor o igual a 20";
+						
+		}
+		return saldo;
+	}
+
 }
