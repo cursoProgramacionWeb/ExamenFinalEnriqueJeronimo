@@ -41,16 +41,30 @@ public class Negocio {
         else {
               msg="Imposible actualizar";
         }
-       return msg;
+    return msg;
        
 	}
 
-	public int consultarSaldo(String numero, int contrasenha,
-			String numeroComprobacion) {
+	public String consultarSaldo(String numero, int contrasenha,
+			String numeroComprobacion, int cantidadPagar) {
 		
 		int saldo= tarjetadao.consultarSaldo(numero, contrasenha, numeroComprobacion);
+		
+		String msg="";
+		if(saldo<20){
+			msg="No se puede hacer el pago. Saldo en cuenta menor a 20 euros";
+		}
+		else{
+			if(cantidadPagar>=saldo){
+				msg="No hay suficiente dinero en cuenta para pagar";
+			}
+			else{
+				msg="Pago efectuado";
+			}
+			
+		}
 				
-		return saldo;
+	return msg;
 	}
 
 }
