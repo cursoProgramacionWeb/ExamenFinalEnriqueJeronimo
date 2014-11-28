@@ -1,8 +1,13 @@
 package es.tarjetas.modelo;
 
+
+import javax.jws.WebService;
+
 import es.tarjetas.integracion.TarjetaDAO;
 
-public class Negocio {
+@WebService(endpointInterface="es.tarjetas.modelo.NegocioWS")
+
+public class Negocio implements NegocioWS {
 	
 	private TarjetaDAO tarjetadao= new TarjetaDAO();
 
@@ -45,6 +50,10 @@ public class Negocio {
        
 	}
 
+	/* (non-Javadoc)
+	 * @see es.tarjetas.modelo.NegocioWS#consultarSaldo(java.lang.String, int, java.lang.String, int)
+	 */
+	@Override
 	public String consultarSaldo(String numero, int contrasenha,
 			String numeroComprobacion, int cantidadPagar) {
 		

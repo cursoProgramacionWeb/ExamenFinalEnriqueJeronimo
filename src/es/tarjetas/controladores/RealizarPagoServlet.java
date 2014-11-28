@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.tarjetas.modelo.Negocio;
+import es.tarjetas.modelo.NegocioWS;
 
 /**
  * Servlet implementation class RealizarPagoServlet
@@ -39,7 +40,7 @@ public class RealizarPagoServlet extends HttpServlet {
 		int cantidadPagar= Integer.parseInt(request.getParameter("cantidadPagar"));
 	
         //CAMINO DE IDA HACIA LA BD
-		Negocio negocio= new Negocio();
+		NegocioWS negocio= new Negocio();
 		String msg= negocio.consultarSaldo(numero, contrasenha, numeroComprobacion, cantidadPagar);
 	
 		
